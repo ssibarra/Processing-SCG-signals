@@ -1,12 +1,10 @@
 function detectar_picos
-signal=load('b001m.mat');
-%x=signal(:,1);
-%y=signal(:,2);
-%plot(x,y, 'r-')
+clear all, close all, clc
+load('b001m.mat');
 figure ();
-plot (signal);
+plot (val);
 %hold on
-%[peak_value, peak_location] = findpeaks(signal);
+%[peak_value, peak_location] = findpeaks(val);
 %plot (peak_location, peak_value, 'c')
-%[peak_value, peak_location] = findpeaks(signal,'sortstr','ascend');
+%[peak_value, peak_location] = findpeaks(val,'sortstr','ascend');
 end

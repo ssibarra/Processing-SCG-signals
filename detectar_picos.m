@@ -1,6 +1,6 @@
 function detectar_picos
 clear all, close all, clc
-load('b001m.mat');
+load('b002m.mat');
 figure ();
 plot (val);
 %hold on

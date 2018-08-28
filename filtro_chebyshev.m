@@ -1,11 +1,11 @@
 function filtro_chebyshev
 clear all, close all, clc
-load('b001m.mat');
+load('b020m.mat');
 figure(3)
 subplot(3,1,1)
 tam_val=length(val);
 tam=tam_val/4;
-plot(val)
+%plot(val)
 xlim([0 tam])
 title('Señal original')
 
@@ -18,7 +18,7 @@ df=df(1:nfft/2);
 mdf=abs(df).^2;
 f=(0:nfft/2-1)*Fs/nfft;
 figure(4);
-plot(f,mdf);
+%plot(f,mdf);
 title('Espectro de potencia');
 xlabel('Frecuencia (Hz)');
 ylabel('Potencia');
@@ -30,7 +30,7 @@ freqz(c,d);
 dataOut=filter(c,d,inS);
 figure(3)
 subplot(3,1,2)
-plot(dataOut)
+%plot(dataOut)
 xlim([0 tam])
 title('Seal confiltro pasaaltas')
 
@@ -41,16 +41,16 @@ freqz(b,a);
 data=filter(b,a,dataOut);
 figure(3)
 subplot(3,1,3)
-plot(data)
+%plot(data)
 xlim([0 tam])
 title('Seal con filtro pasaaltas y luego pasabajas')
 
 %% PSNR y MSE
-[peakSnr, snr] = psnr(data, val);
+[peakSnr, snr] = psnr(data, inS);
 fprintf ('\n El valor del pico SNR es %0.4f', peakSnr);
 fprintf ('\n El valor SNR es %0.4f', snr);
 
-error = immse(data, val);
+error = immse(data, inS);
 fprintf ('\n El error MSE es %0.4f', error);
 end
 

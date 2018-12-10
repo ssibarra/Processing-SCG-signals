@@ -66,23 +66,9 @@ xlim(handles.axes1, [15 30])
 df=fft(datab, tam_val);
 y=fftshift(df);
 fshift=(-tam_val/2:tam_val/2-1)*(Fs/tam_val);
-plot(handles.axes2 ,fshift,abs(y).^2/tam_val)
-title(handles.axes2 ,'FFT shift señal Buttord')
-xlim(handles.axes2, [15 30])
-
-df=fft(datac, tam_val);
-y=fftshift(df);
-fshift=(-tam_val/2:tam_val/2-1)*(Fs/tam_val);
-plot(handles.axes3 ,fshift,abs(y).^2/tam_val)
-title(handles.axes3 ,'FFT shift señal Chebyshev')
-xlim(handles.axes3, [15 30])
-
-df=fft(datae, tam_val);
-y=fftshift(df);
-fshift=(-tam_val/2:tam_val/2-1)*(Fs/tam_val);
-plot(handles.axes4 ,fshift,abs(y).^2/tam_val)
-title(handles.axes4 ,'FFT shift señal Cauer')
-xlim(handles.axes4, [15 30])
+plot(handles.axes1 ,fshift,abs(y).^2/tam_val)
+title(handles.axes1 ,'FFT shift señ')
+xlim(handles.axes1, [15 30])
 
 % Choose default command line output for GUI_ESPECTRO
 handles.output = hObject;

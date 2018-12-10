@@ -119,8 +119,6 @@ pos = get(handles.lista, 'Value');
 signal = string(contenido(pos));
 load(signal);
 
-global inS tam_val datab datac datae
-
 inS=normalizar(val);
 
 tam_val=length(val);
@@ -135,46 +133,31 @@ Ws=70/2500;
 
 [n,Wn]=buttord(Wp,Ws,3,60);
 [b,a]=butter(n,Wn);
-datab=filter(b,a,inS);
-plot(handles.axes2, datab)                          
+data=filter(b,a,inS);
+plot(handles.axes2, data)                          
 title(handles.axes2, 'Señal filtrada con Buttord')
 xlim(handles.axes2, [0 tam])
 
-[Psnr, snr] = psnr(datab, inS);
-peakSnr = sprintf('%0.4f', Psnr);
+[peakSnr, snr] = psnr(data, inS);
 set (handles.text4, 'String', peakSnr);
 
-error = sprintf('%0.4f', immse(datab, inS));
+error = sprintf(immse(data, inS);
 set (handles.text5, 'String', error);
 
 
 [N,Wnc]=cheb1ord(Wp,Ws,3,60);
 [b,a]=cheby1(N,3,Wnc);
-datac=filter(b,a,inS);
-plot(handles.axes5, datac)
+data=filter(b,a,inS);
+plot(handles.axes5, data)
 title(handles.axes5, 'Señal filtrada con Chebyshev')
 xlim(handles.axes5, [0 tam])
 
-[Psnr, snr] = psnr(datac, inS);
-peakSnr = sprintf('%0.4f', Psnr);
-set (handles.text9, 'String', peakSnr);
-
-error = sprintf('%0.4f', immse(datac, inS));
-set (handles.text10, 'String', error);
-
 [N,Wne]=ellipord(Wp,Ws,3,60);
 [b,a]=ellip(N,3,60,Wne);
-datae=filter(b,a,inS);
-plot(handles.axes6, datae)
+data=filter(b,a,inS);
+plot(handles.axes6, data)
 title(handles.axes6, 'Señal filtrada con Cauer')
 xlim(handles.axes6, [0 tam])
-
-[Psnr, snr] = psnr(datae, inS);
-peakSnr = sprintf('%0.4f', Psnr);
-set (handles.text13, 'String', peakSnr);
-
-error = sprintf('%0.4f', immse(datae, inS));
-set (handles.text14, 'String', error);
 
 
 function sign = normalizar(val)

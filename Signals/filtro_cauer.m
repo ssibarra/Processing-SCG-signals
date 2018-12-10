@@ -4,7 +4,7 @@
 % En el presente algoritmo se presentan los avances realizados semana a
 % semana, guiados por el profesor Juan Pablo Tello Portillo, en la implementació de un código que procese señales SCG. 
 %
-function filtro_chebyshev2
+function filtro_cauer
 clear all, close all, clc
 load('b006m.mat');
 figure(1)
@@ -36,12 +36,12 @@ xlim([15 30])
 %% Pasabajas
 Wp=30/2500;
 Ws=70/2500;
-[n,Wn]=buttord(Wp,Ws,3,60);
-[b,a]=butter(n,Wn);
+[N,Wne]=ellipord(Wp,Ws,3,60);
+[b,a]=ellip(N,3,60,Wne);
 data=filter(b,a,inS);
 figure(1)
 subplot(2,1,2)
-plot(data)                          %Senal filtrada 
+plot(data)
 xlim([0 tam])
 title('Señal con filtro pasabajas')
 
